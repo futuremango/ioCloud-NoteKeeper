@@ -1,3 +1,0 @@
-mongodb+srv://roma_cloud:0VAnEEY4qnKYE5GL@cloudcluster.w0lz0m0.mongodb.net/?appName=cloudcluster
-username=roma_cloud
-pass=0VAnEEY4qnKYE5GL

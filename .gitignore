@@ -1,0 +1,13 @@
+# Node modules (both frontend + backend)
+iocloud-frontend/node_modules/
+iocloud-backend/node_modules/
+
+# Environment variables
+iocloud-backend/.env
+
+# Build or dist folders
+iocloud-frontend/build/
+
+# System files
+.DS_Store
+Thumbs.db

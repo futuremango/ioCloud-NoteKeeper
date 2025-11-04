@@ -4,10 +4,16 @@ import Context from "../context/notes/noteContext";
 const AddNote = () => {
   const yo = useContext(Context);
   const { addNote } = yo;
-  const [note, setNote] = useState({ title: "", description: "", tag: "default" });
+  const [note, setNote] = useState({ title: "", description: "", tag: "" });
+
   const handleClick = (e) => {
     e.preventDefault();
+    if (!note.title || !note.description || !note.tag) {
+      alert("Please fill all fields before adding a note!");
+      return;
+    }
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" }); 
   };
 
   const onChange = (e) => {
@@ -21,7 +27,7 @@ const AddNote = () => {
         <form className="container my-3">
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
-              title
+              Title
             </label>
             <input
               type="text"
@@ -43,16 +49,17 @@ const AddNote = () => {
               onChange={onChange}
             />
           </div>
-          <div className="mb-3 form-check">
+          <div className="mb-3">
+            <label htmlFor="tag" className="form-label">
+              Tag
+            </label>
             <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
+              type="text"
+              className="form-control"
+              id="tag"
+              name="tag"
               onChange={onChange}
             />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Check me out
-            </label>
           </div>
           <button
             type="submit"

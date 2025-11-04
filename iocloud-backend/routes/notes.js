@@ -51,6 +51,7 @@ router.post(
     body("description", "Description must be atleast 5 characters!").isLength({
       min: 5,
     }),
+    body("tag", "Please Enter a valid Tag!").isLength({ min: 2 })
   ],
   async (req, res) => {
     try {

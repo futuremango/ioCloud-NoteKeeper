@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
 const connectDB = require('./db');
-
 const app = express();
+app.use(cors())
 const port = 5000;
 
 // Middleware to parse JSON

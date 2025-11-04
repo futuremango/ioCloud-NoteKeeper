@@ -19,7 +19,16 @@ const Noty = () => {
     edescription: "",
     etag: "",
   });
-
+  //this function is just to prepare the input fields for the actual function: updateNote(check handleClick)
+  const updateMyNote = (currentnote) => {
+    ref.current.click();
+    setNote({
+      etitle: currentnote.title || "",
+      edescription: currentnote.description || "",
+      etag: currentnote.tag || "",
+      id: currentnote._id || "",
+    });
+  };
   const handleClick = (e) => {
     e.preventDefault();
     if (!note.etitle || !note.edescription || !note.etag) {
@@ -34,16 +43,6 @@ const Noty = () => {
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
-  };
-
-  const updateMyNote = (currentnote) => {
-    ref.current.click();
-    setNote({
-      etitle: currentnote.title || "",
-      edescription: currentnote.description || "",
-      etag: currentnote.tag || "",
-      id: currentnote._id || "",
-    });
   };
 
   return (
@@ -92,6 +91,8 @@ const Noty = () => {
                     name="etitle"
                     value={note.etitle}
                     onChange={onChange}
+                    minLength={4}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -105,6 +106,8 @@ const Noty = () => {
                     name="edescription"
                     value={note.edescription}
                     onChange={onChange}
+                    minLength={4}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -118,6 +121,8 @@ const Noty = () => {
                     name="etag"
                     value={note.etag}
                     onChange={onChange}
+                    minLength={4}
+                    required
                   />
                 </div>
               </form>
@@ -145,12 +150,16 @@ const Noty = () => {
       </div>
 
       <div className="row my-3">
-        <h4>~ Your Notes ~</h4>
+        <h4>Your Notes</h4>
+        <div className="container">
+        {notes.length === 0 && "No notes to display here!"}
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem key={note._id} updateMyNote={updateMyNote} note={note} />
           );
         })}
+        
       </div>
     </>
   );

@@ -6,7 +6,7 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(initial_notes);
   const host = "http://localhost:5000";
 
-  const getAllNotes = async () => {
+  const getAllNotes = async () => { //saray backend waly functions ab frontend m bhi banao
     const response = await fetch(`${host}/api/notes/fetchAllnotes`, {
       method: "GET",
       headers: {
@@ -31,7 +31,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     });
     const note = await response.json();
-    console.log("Note Added: " + note);
+    console.log("Note Added: ", note);
     setNotes(notes.concat(note));
   };
 
@@ -45,10 +45,11 @@ const NoteState = (props) => {
       },
     });
     const json = await response.json();
-    console.log("Deleted note response: " + json);
-    console.log("Deleting the note with id: " + id);
-
-    const newNote = await notes.filter((note) => note._id !== id);
+    console.log("Deleted note response: ", json);
+    window.confirm("Are you sure you want to delete this note?");
+    console.log("Deleting the note with id: ", id);
+    //delete logic
+    const newNote = notes.filter((note) => note._id !== id);
     setNotes(newNote);
   };
   const updateNote = async(id, title, description, tag) => {
@@ -74,9 +75,7 @@ const NoteState = (props) => {
   };
 
   return (
-    <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, updateNote, getAllNotes }}
-    >
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, updateNote, getAllNotes }}>
       {props.children}
     </NoteContext.Provider>
   );

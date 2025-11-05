@@ -51,7 +51,7 @@ router.post(
     body("description", "Description must be atleast 5 characters!").isLength({
       min: 5,
     }),
-    body("tag", "Please Enter a valid Tag!").isLength({ min: 2 })
+    body("tag", "Please Enter a valid Tag!").isLength({ min: 2 }),
   ],
   async (req, res) => {
     try {
@@ -152,7 +152,6 @@ router.put("/updateNote/:id", fetchMyGuy, async (req, res) => {
 // ==========================================================
 router.delete("/deleteNote/:id", fetchMyGuy, async (req, res) => {
   try {
-
     // 🧾 Step 1: Find the note that needs to be deleted by its ID
     let note = await Note.findById(req.params.id);
 
@@ -171,7 +170,7 @@ router.delete("/deleteNote/:id", fetchMyGuy, async (req, res) => {
     note = await Note.findByIdAndDelete(req.params.id);
 
     //Step 4: Send Success as response
-    res.json({"Success":"Note has been deleted successfully!"});
+    res.json({ Success: "Note has been deleted successfully!" });
   } catch (err) {
     // 🧯 Handle any unexpected errors gracefully
     console.error(err.message);

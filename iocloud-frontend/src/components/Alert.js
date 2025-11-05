@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Alert = ({ alert, setAlert }) => {
-  useEffect(() => {
-    if (alert) {
-      const timer = setTimeout(() => {
-        setAlert(null);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [alert, setAlert]);
-
+function Alert(props) {
+  const Captalize = (word) => {
+    let str = word.toLowerCase();
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
   return (
-   alert && (
-      <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
-       <strong>{alert.message}</strong> 
-      </div>
-   )
+    <div style={{ height: "50px" }}>
+      {props.alert && (
+        <div
+          className={`alert alert-${props.alert.type} alert-dismissible fade show`}
+          role="alert"
+        >
+          <strong>{Captalize(props.alert.type)}</strong>: {props.alert.message}
+        </div>
+      )}
+    </div>
   );
-};
+}
 
 export default Alert;

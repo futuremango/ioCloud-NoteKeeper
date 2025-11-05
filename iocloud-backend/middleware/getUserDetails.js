@@ -1,5 +1,5 @@
 // Importing 'jsonwebtoken' to work with JWT tokens (used for authentication)
-const jwt = require("jsonwebtoken"); 
+const jwt = require("jsonwebtoken");
 
 // Fetching the secret JWT key stored in the environment variables (.env file)
 const JWT_Token = process.env.JWT_Token;

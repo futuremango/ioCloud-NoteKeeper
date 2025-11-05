@@ -12,23 +12,34 @@ import Signup from "./components/Signup";
 function App() {
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
-    setAlert({ message, type });
+    setAlert({
+      message: message,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 3000);
   };
   return (
     <>
-      <NoteState>
+      <NoteState showAlert={showAlert}>
         <Router>
-          <Navbar />
+          <Navbar showAlert={showAlert} />
           <Alert alert={alert} setAlert={setAlert} />
-          <button className="btn btn-success" onClick={() => showAlert("Note added successfully!", "success")}>
-            Show Alert
-          </button>
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home showAlert={showAlert} />} />
               <Route exact path="/about" element={<About />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/signup" element={<Signup />} />
+              <Route
+                exact
+                path="/login"
+                element={<Login showAlert={showAlert} />}
+              />
+              <Route
+                exact
+                path="/signup"
+                element={<Signup showAlert={showAlert} />}
+              />
             </Routes>
           </div>
         </Router>

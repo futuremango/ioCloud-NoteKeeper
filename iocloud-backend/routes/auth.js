@@ -64,22 +64,25 @@ router.post(
       // 🪬 Step 8: Create authentication token (jwt.sign = synchronous)
       // jwt.sign() takes: (data, secret key)
       const auth_token = jwt.sign(data, JWT_Token);
+      const success = true;
       // 🕊️ Step 9: Send response back → includes token & created user
-      res.json({ auth_token, user });
+      res.json({ success, auth_token, user });
     } catch (err) {
       // 🧯 If something goes wrong, show error in console & send 500 status
       console.error(err.message);
-      res.status(500).send("Some error occurred!");
+      const success = false;
+      res.status(500).send(success, "Some error occurred!");
     }
   }
 );
 
-
 // 🧿 ROUTE 2: Login User using POST → /api/auth/login
-router.post("/login",[
+router.post(
+  "/login",
+  [
     // 👇 Validation checks
     body("email", "Enter a valid email fam").isEmail(),
-    body("password", "Password must not be blank").exists(), 
+    body("password", "Password must not be blank").exists(),
   ],
   // 🔹 async = returns a Promise
   async (req, res) => {
@@ -117,18 +120,17 @@ router.post("/login",[
       };
       // 🪬 Step 6: Sign and create JWT token
       const auth_token = jwt.sign(data, JWT_Token);
-      let success=true;
+      let success = true;
       // 🎁 Step 7: Send token as response (can be stored in frontend localStorage)
       res.json({ success, auth_token });
     } catch (err) {
       // 🧯 Handle any server-side errors
-      let success=false;
+      let success = false;
       console.error(success, err.message);
       res.status(500).send(success, "Internal Server Issue");
     }
   }
 );
-
 
 // 🧿 ROUTE 3: Fetch User details using POST → /api/auth/fetchUser
 // Protected route → requires valid token (middleware: fetchMyGuy)

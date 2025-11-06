@@ -3,6 +3,7 @@ import Context from "../context/notes/noteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
+import "../styles/Addnote.css";
 
 const Noty = (props) => {
   const { showAlert } = props;
@@ -14,7 +15,7 @@ const Noty = (props) => {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/auth");
     } else {
       getAllNotes();
     }
@@ -56,6 +57,7 @@ const Noty = (props) => {
 
   return (
     <>
+    <div className="addnote-container">
       {!localStorage.getItem("token") ? (
         // If not logged in, show this message instead of notes
         <div className="text-center my-5">
@@ -65,7 +67,7 @@ const Noty = (props) => {
           </p>
           <button
             className="btn btn-primary mt-3"
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/auth")}
           >
             Go to Login
           </button>
@@ -129,13 +131,14 @@ const Noty = (props) => {
                       <label htmlFor="edescription" className="form-label">
                         Description
                       </label>
-                      <input
+                      <textarea
                         type="text"
                         className="form-control"
                         id="edescription"
                         name="edescription"
                         value={note.edescription}
                         onChange={onChange}
+                        rows={5}
                         minLength={4}
                         required
                       />
@@ -170,7 +173,7 @@ const Noty = (props) => {
                   <button
                     type="button"
                     onClick={handleClick}
-                    className="btn btn-primary"
+                    className="btn btn-secondary"
                   >
                     Update Note
                   </button>
@@ -180,7 +183,8 @@ const Noty = (props) => {
           </div>
 
           {/* Notes section */}
-          <div className="row my-3">
+          <div className="notes-section">
+          <div className=" concon row my-3">
             <h4>Your Notes</h4>
             <div className="container">
               {notes.length === 0 && "No notes to display here!"}
@@ -194,8 +198,10 @@ const Noty = (props) => {
               />
             ))}
           </div>
+          </div>
         </>
       )}
+      </div>
     </>
   );
 };

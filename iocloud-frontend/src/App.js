@@ -6,10 +6,11 @@ import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-
+// import Login from "./components/Login";
+// import Signup from "./components/Signup";
+import AuthPage from "./components/AuthPage";
 function App() {
+  
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
     setAlert({
@@ -30,7 +31,9 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert} />} />
               <Route exact path="/about" element={<About />} />
-              <Route
+              <Route path="/auth" element={<AuthPage showAlert={showAlert} />} />
+
+              {/* <Route
                 exact
                 path="/login"
                 element={<Login showAlert={showAlert} />}
@@ -39,7 +42,7 @@ function App() {
                 exact
                 path="/signup"
                 element={<Signup showAlert={showAlert} />}
-              />
+              /> */}
             </Routes>
           </div>
         </Router>

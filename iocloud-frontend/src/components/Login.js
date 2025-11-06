@@ -12,7 +12,7 @@ const Login = (props) => {
     setLoading(true);
 
     // API Call
-    const response = await fetch(`${host}/api/auth/login`, {
+    const response = await fetch(`${host}/api/auth/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const Login = (props) => {
             onChange={(e) => {
               setCredentials({ ...credentials, email: e.target.value });
             }}
-            id="exampleInputEmail1"
+            id="email"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text">
@@ -70,7 +70,7 @@ const Login = (props) => {
               setCredentials({ ...credentials, password: e.target.value });
             }}
             className="form-control"
-            id="exampleInputPassword1"
+            id="password"
           />
         </div>
 

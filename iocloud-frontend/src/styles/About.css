@@ -1,0 +1,114 @@
+.about-container {
+  min-height: 100vh;
+  
+  background-size: 200% 200%;
+  padding: 7rem 2rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #3a2b28;
+}
+
+.about-content {
+  max-width: 900px;
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8));
+  border: 2px solid #5e433d;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.about-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.about-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2b1e1b;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  color: #7a5e56;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.about-title span{
+    font-family: "Shadows Into Light", cursive;
+    color: #b97b63;
+}
+.about-section {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.about-section h2 {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 1.4rem;
+  color: #4b3a36;
+  margin-bottom: 0.8rem;
+}
+
+.about-section p {
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #5e433d;
+}
+
+.about-footer {
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #7e6359;
+}
+
+.about-section:not(:last-child)::after {
+  content: "";
+  display: block;
+  margin: 1.5rem auto;
+  width: 50%;
+  height: 1px;
+  background: rgba(90, 70, 65, 0.2);
+}
+
+/* 🌿 Responsive Design */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .about-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-section p {
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

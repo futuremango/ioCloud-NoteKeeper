@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import "../styles/Navbar.css";
 const Navbar = (props) => {
   const { showAlert } = props;
   const location = useLocation();
@@ -13,6 +13,7 @@ const Navbar = (props) => {
   };
 
   return (
+    <div className="nav-container">
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
@@ -61,18 +62,11 @@ const Navbar = (props) => {
             {!localStorage.getItem("token") ? (
               <>
                 <Link
-                  className="btn btn-primary mx-1"
-                  to="/login"
+                  className="btn Lo-btn-primary mx-1"
+                  to="/auth"
                   role="button"
                 >
-                  Login
-                </Link>
-                <Link
-                  className="btn btn-primary mx-1"
-                  to="/signup"
-                  role="button"
-                >
-                  Signup
+                  Login/Signup
                 </Link>
               </>
             ) : (
@@ -84,6 +78,7 @@ const Navbar = (props) => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

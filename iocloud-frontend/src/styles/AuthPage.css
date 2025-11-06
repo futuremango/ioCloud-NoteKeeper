@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+.auth-page {
+  height: 100vh;
+  font-family: "Red Hat Display", sans-serif;
+    
+
+}
+
+.auth-container {
+
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  width: 850px;
+  max-width: 100%;
+  min-height: 520px;
+  transition: all 0.6s ease-in-out;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+
+.auth-container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+.form-container form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #7b5e57;
+  font-family: "Red Hat Display";
+}
+
+.form-container input {
+  background-color: #f0f0f0;
+  font-family: "Red Hat Display";
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+.overlay {
+  background: 
+    linear-gradient(135deg, rgba(164, 124, 109, 0.8), rgba(205, 182, 165, 0.8)),
+    url("../../public/icon1.png") center/cover no-repeat;
+  color: #fff;
+  position: relative;
+  font-family: "Red Hat Display";
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+
+.auth-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.auth-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+.btn-outline-light {
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: "Red Hat Display";
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #7b5e57;
+  font-family: "Red Hat Display";
+}
+/* --- Mobile View Toggle Styles --- */
+.mobile-view {
+  display: none;
+}
+
+.toggle-text {
+  color: #7b5e57;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.toggle-text span:hover {
+  color: #a47c6d;
+}
+
+
+
+@media (max-width: 992px) {
+  .auth-page {
+    margin-top: 4rem; /* to avoid overlapping navbar */
+    min-height: 100vh;
+      
+  }
+  .mobile-view {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    width: 90%;
+    margin: 2rem auto;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+  .auth-container {
+    width: 90%;
+    min-height: 300px;
+  }
+  .mobile-form input {
+    background: #f7f7f7;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 6px;
+  }
+  .desktop-view {
+    display: none;
+  }
+
+  .overlay {
+    display: none; /* hide fancy overlay on small screens */
+  }
+
+  .sign-in-container,
+  .sign-up-container {
+    width: 100%;
+    position: relative;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .form-container form {
+    padding: 2rem 1.5rem;
+  }
+}
+/* Show mobile version & hide desktop version */
+@media (max-width: 768px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    width: 90%;
+    margin: 2rem auto;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-form input {
+    background: #f7f7f7;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .auth-page {
+    margin-top: 4rem; /* to avoid overlapping navbar */
+    min-height: 100vh;
+      
+  }
+}
+@media (max-width: 600px) {
+  
+  .auth-container {
+    width: 95%;
+    box-shadow: none;
+    border-radius: 10px;
+  }
+
+  .form-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-container input {
+    padding: 8px 12px;
+  }
+
+  .btn-outline-light {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}

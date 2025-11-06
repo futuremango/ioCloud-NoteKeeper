@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Context from "../context/notes/noteContext";
-
+import "../styles/Addnote.css";
 const AddNote = (props) => {
   const { showAlert } = props;
   const yo = useContext(Context);
@@ -23,10 +23,10 @@ const AddNote = (props) => {
   };
 
   return (
-    <div>
+    <div className="addnote-container">
       <div className="container my-3">
         <h4>Add a Note</h4>
-        <form className="container my-3">
+        <form className="containery text-start my-3">
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
